@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>画像でゴミ分類！</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/style.css' %}" />
+</head>
+<body>
+	<h1>画像でゴミ分類！</h1>
+	<p>結果は</p>
+	<img src="../image.png" alt="画像">
+	<table>
+		<tr><th>分類</th><td>確率</td></tr>
+		{% for key, value in pred %}
+			<tr><th>{{ key }}</th><td>{{ value }}</td></tr>
+		{% endfor %}
+	</table>
+	<a href="{% url "index" %}">Top</a>
+
+</body>
+</html>

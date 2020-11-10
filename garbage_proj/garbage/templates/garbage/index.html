@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>画像でゴミ分類！</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/style.css' %}" />
+</head>
+<body>
+	<h1>画像でゴミ分類！</h1>
+	<p>分類を調べたい画像を入力してください</p>
+	<form action="/garbage/result" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form }}
+		<br>
+		<button type="submit">送信</button>
+	</form>
+</body>
+</html>
