@@ -5,19 +5,28 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>画像でゴミ分類！</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/bootstrap.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/style.css' %}" />
 </head>
 <body>
-	<h1>画像でゴミ分類！</h1>
-	<p>結果は</p>
-	<img src="../image.png" alt="画像">
-	<table>
-		<tr><th>分類</th><td>確率</td></tr>
-		{% for key, value in pred %}
-			<tr><th>{{ key }}</th><td>{{ value }}</td></tr>
-		{% endfor %}
-	</table>
-	<a href="{% url "index" %}">Top</a>
+	<img src="./media/images/title.png" alt="画像でゴミ分類！" class="m-4" id="title">
+	<div class="container row">
+		<div class="col-lg-8 offset-lg-2">
+			<div class="container card p-3 my-4 px-5">
+				<h2 class="m-3">分類結果</h2>
+				<img src="./media/images/image.png" alt="画像" id="result-img">
+				<div class="container">
+					<table class="table">
+						<tr><th>分類</th><td>確率</td></tr>
+						{% for key, value in pred %}
+						<tr><th>{{ key }}</th><td>{{ value }}%</td></tr>
+						{% endfor %}
+					</table>
+					<a href="{% url "index" %}">Topへ戻る</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

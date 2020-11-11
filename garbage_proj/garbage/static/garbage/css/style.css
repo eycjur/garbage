@@ -1,1 +1,19 @@
 /*  */
+body{
+	text-align: center;
+	background-color: rgb(239, 239, 240);
+}
+
+#title{
+	float: center;
+	width: 50%;
+}
+
+#result-img{
+	width: 100%;
+	height: auto;
+}
+
+.sample-img{
+	width: 90%;
+}

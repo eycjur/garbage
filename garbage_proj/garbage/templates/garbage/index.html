@@ -5,16 +5,32 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>画像でゴミ分類！</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/bootstrap.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/style.css' %}" />
 </head>
 <body>
-	<h1>画像でゴミ分類！</h1>
-	<p>分類を調べたい画像を入力してください</p>
-	<form action="/garbage/result" method="post" enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ form }}
-		<br>
-		<button type="submit">送信</button>
-	</form>
+	<img src="./media/images/title.png" alt="画像でゴミ分類！" class="m-4" id="title">
+	<div class="container row">
+		<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+			<div class="container card p-4 mt-4">
+				<p>分類を調べたい画像を入力してください</p>
+				<form action="/garbage/result" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{ form }}
+					<br>
+					<button type="submit" class="mt-3">送信</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<h4>既存の画像を利用する</h4>
+	<div class="container row">
+		<div class="col-md-6 p-3">
+			<img src="./media/images/temp1.jpg" alt="画像1" class="sample-img">
+		</div>
+		<div class="col-md-6 p-3">
+			<img src="./media/images/temp2.jpg" alt="画像2" class="sample-img">
+		</div>
+	</div>
 </body>
 </html>

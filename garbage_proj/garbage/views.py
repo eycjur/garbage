@@ -31,6 +31,15 @@ def result(request):
     }
     return render(request, "garbage/result.html", params)
 
+def sample(request, num):
+    img = "../media/images/" + ["temp1", "temp2"][num]
+
+    params = {
+        "img":img,
+        "pred":pred
+    }
+    return render(request, "garbage/result.html", params)
+
 
 def predict(img):
     # 読み込み
@@ -45,7 +54,7 @@ def predict(img):
 
     img_width, img_height = 150, 150
     img = Image.open(img)
-    img.save("image.png")
+    img.save("media/images/image.png")
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
 
@@ -56,6 +65,7 @@ def predict(img):
     # 画像の人物を予測
     pred = model.predict(x)[0]
     # 結果を表示する
-    pred_dict = {c:s for (c, s) in zip(classes, pred*100)}
+    np.set_printoptions(suppress=True)
+    pred_dict = {c:"{:.2f}".format(s) for (c, s) in zip(classes, pred*100)}
     pred_dict = sorted(pred_dict.items(), key=lambda x:x[1], reverse=True)
     return pred_dict
