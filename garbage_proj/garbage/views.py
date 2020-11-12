@@ -68,6 +68,7 @@ def predict(img):
     img.save("media/images/image.png")
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
+    days = ["第2・4木曜日", "水曜日", "火・金曜日", "第1・3金曜日", "第1・3金曜日"]
 
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
@@ -77,6 +78,6 @@ def predict(img):
     pred = model.predict(x)[0]
     # 結果を表示する
     np.set_printoptions(suppress=True)
-    pred_dict = {c:"{:.2f}".format(s) for (c, s) in zip(classes, pred*100)}
-    pred_dict = sorted(pred_dict.items(), key=lambda x:x[1], reverse=True)
-    return pred_dict
+    pred_list = [[c, "{:.2f}".format(s), d] for (c, s, d) in zip(classes, pred*100, days)]
+    pred_list = sorted(pred_list, key=lambda x:x[1], reverse=True)
+    return pred_list

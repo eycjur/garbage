@@ -9,24 +9,33 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/style.css' %}" />
 </head>
 <body>
-	<img src="./media/images/title.png" alt="画像でゴミ分類！" class="m-4" id="title">
-	<div class="container row">
-		<div class="col-lg-8 offset-lg-2">
-			<div class="container card p-3 my-4 px-5">
-				<h2 class="m-3">分類結果</h2>
-				<img src="./media/images/image.png" alt="画像" id="result-img">
-				<div class="container">
-					<table class="table">
-						<tr><th>分類</th><td>確率</td></tr>
-						{% for key, value in pred %}
-						<tr><th>{{ key }}</th><td>{{ value }}%</td></tr>
-						{% endfor %}
-					</table>
-					<a href="{% url "garbage:index" %}">Topへ戻る</a>
+	<div id="wrapper">
+		<img src="./media/images/title.png" alt="画像でゴミ分類！" class="m-4 pb-3" id="title">
+		<div class="container row">
+			<div class="card col-md-4 py-4 px-0 d-none d-md-block">
+				<p role="button" class="mb-2 btn border-dark rounded-0 btn-secondary">外部リンク集</p>
+				<a href="https://manage.delight-system.com/threeR/web/bunbetsu?menu=bunbetsu&jichitaiId=kashiwashi&areaId=22125&areaName=%2F&lang=ja&benriCateId=7&bunbetsuCateId=7&faqCateId=%2F&howToCateId=&search=%E3%83%9A%E3%83%83%E3%83%88%E3%83%9C%E3%83%88%E3%83%AB&dummy=" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">分別検索</a>
+				<a href="https://manage.delight-system.com/threeR/web/benri?menu=benri&jichitaiId=kashiwashi&areaId=22125&benriCateId=7&bunbetsuCateId=7&faqCateId=%2f&lang=ja" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">ごみの分け方・出し方</a>
+			</div>
+			<div class="col-md-8">
+				<div class="container card p-4 px-5">
+					<h2 class="m-3">分類結果</h2>
+					<img src="./media/images/image.png" alt="画像" id="result-img">
+					<div class="container">
+						<table class="table">
+							<tr><th>分類</th><td>確率</td><td>収集曜日</td></tr>
+							{% for key, value, day in pred %}
+							<tr><th>{{ key }}</th><td>{{ value }}%</td><td>{{ day }}</td></tr>
+							{% endfor %}
+						</table>
+						<a href="{% url "garbage:index" %}">Topへ戻る</a>
+					</div>
 				</div>
 			</div>
 		</div>
+		<footer>
+			<p id="copyright" class="mb-0">Copyright &copy; 2020 eycjur All Rights Reserved.</p>
+		</footer>
 	</div>
-
 </body>
 </html>

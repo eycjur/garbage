@@ -8,6 +8,12 @@ body{
 	width: 50%;
 }
 
+#wrapper{
+	min-height: 100vh;
+	position: relative;
+	padding-bottom: 40px;
+}
+
 #result-img{
 	width: 100%;
 	height: auto;
@@ -16,3 +22,26 @@ body{
 .sample-img{
 	width: 90%;
 }
+
+a[role="button"]{
+	width: 90%;
+	border: dotted 1px;
+}
+
+p[role="button"]{
+	width: 90%;
+}
+
+p[role="button"]:not(:disabled):not(.disabled) {
+    cursor: default;
+}
+p[role="button"]:hover{
+	background-color: #6c757d ;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
