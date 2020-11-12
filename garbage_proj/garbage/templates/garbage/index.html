@@ -14,7 +14,7 @@
 		<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
 			<div class="container card p-4 mt-4">
 				<p>分類を調べたい画像を入力してください</p>
-				<form action="/garbage/result" method="post" enctype="multipart/form-data">
+				<form action="{% url "garbage:result" %}" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					{{ form }}
 					<br>
@@ -26,10 +26,14 @@
 	<h4>既存の画像を利用する</h4>
 	<div class="container row">
 		<div class="col-md-6 p-3">
-			<img src="./media/images/temp1.jpg" alt="画像1" class="sample-img">
+			<a href="{% url "garbage:sample1" %}">
+				<img src="./media/images/temp1.jpg" alt="画像1" class="sample-img">
+			</a>
 		</div>
 		<div class="col-md-6 p-3">
-			<img src="./media/images/temp2.jpg" alt="画像2" class="sample-img">
+			<a href="{% url "garbage:sample2" %}">
+				<img src="./media/images/temp2.jpg" alt="画像2" class="sample-img">
+			</a>
 		</div>
 	</div>
 </body>

@@ -31,8 +31,19 @@ def result(request):
     }
     return render(request, "garbage/result.html", params)
 
-def sample(request, num):
-    img = "../media/images/" + ["temp1", "temp2"][num]
+def sample1(request):
+    img = "./media/images/temp1.jpg"
+    pred = predict(img)
+
+    params = {
+        "img":img,
+        "pred":pred
+    }
+    return render(request, "garbage/result.html", params)
+
+def sample2(request):
+    img = "./media/images/temp2.jpg"
+    pred = predict(img)
 
     params = {
         "img":img,
