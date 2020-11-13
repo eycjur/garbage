@@ -14,25 +14,20 @@ def index(request):
     return render(request, "garbage/index.html", params)
 
 
-def result(request):
-    form = UploadPictureForm(request.POST, request.FILES)
-    if form.is_valid():
-        img = form.cleaned_data["img"]
-        pred = predict(img)
+def result(request, num=0):
+    if num:
+        img = "./static/garbage/media/images/" + ["temp1.jpg", "temp2.jpg"][num-1]
+
     else:
-        params = {
-            "form":UploadPictureForm()
-        }
-        return render(request, "garbage/index.html", params)
+        form = UploadPictureForm(request.POST, request.FILES)
+        if form.is_valid():
+            img = form.cleaned_data["img"]
+        else:
+            params = {
+                "form":UploadPictureForm()
+            }
+            return render(request, "garbage/index.html", params)
 
-    params = {
-        "img":img,
-        "pred":pred
-    }
-    return render(request, "garbage/result.html", params)
-
-def sample1(request):
-    img = "./media/images/temp1.jpg"
     pred = predict(img)
 
     params = {
@@ -40,17 +35,6 @@ def sample1(request):
         "pred":pred
     }
     return render(request, "garbage/result.html", params)
-
-def sample2(request):
-    img = "./media/images/temp2.jpg"
-    pred = predict(img)
-
-    params = {
-        "img":img,
-        "pred":pred
-    }
-    return render(request, "garbage/result.html", params)
-
 
 def predict(img):
     # 読み込み
@@ -65,7 +49,7 @@ def predict(img):
 
     img_width, img_height = 150, 150
     img = Image.open(img)
-    img.save("media/images/image.png")
+    img.save("./static/garbage/media/images/image.png")
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
     days = ["第2・4木曜日", "水曜日", "火・金曜日", "第1・3金曜日", "第1・3金曜日"]

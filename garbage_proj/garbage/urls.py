@@ -7,6 +7,5 @@ app_name="garbage"
 urlpatterns = [
     path("", views.index, name="index"),
     path("result", views.result, name="result"),
-    path("sample1", views.sample1, name="sample1"),
-    path("sample2", views.sample2, name="sample2"),
+    path("result/<int:num>", views.result, name="result_num"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

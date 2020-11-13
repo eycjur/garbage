@@ -1,51 +1,33 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>画像でゴミ分類！</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/bootstrap.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'garbage/css/style.css' %}" />
-</head>
-<body>
-	<div id="wrapper">
-		<img src="./media/images/title.png" alt="画像でゴミ分類！" class="m-4 pb-3" id="title">
-		<div class="container row">
-			<div class="card col-md-4 py-4 px-0 d-none d-md-block">
-				<p role="button" class="mb-2 btn border-dark rounded-0 btn-secondary">外部リンク集</p>
-				<a href="https://manage.delight-system.com/threeR/web/bunbetsu?menu=bunbetsu&jichitaiId=kashiwashi&areaId=22125&areaName=%2F&lang=ja&benriCateId=7&bunbetsuCateId=7&faqCateId=%2F&howToCateId=&search=%E3%83%9A%E3%83%83%E3%83%88%E3%83%9C%E3%83%88%E3%83%AB&dummy=" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">分別検索</a>
-				<a href="https://manage.delight-system.com/threeR/web/benri?menu=benri&jichitaiId=kashiwashi&areaId=22125&benriCateId=7&bunbetsuCateId=7&faqCateId=%2f&lang=ja" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">ごみの分け方・出し方</a>
-			</div>
-			<div class="col-md-8">
-				<div class="container card p-4 h-100">
-					<p>分類を調べたい画像を入力してください</p>
-					<form action="{% url "garbage:result" %}" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{{ form }}
-						<br>
-						<button type="submit" class="mt-3 wait-disappear">送信</button>
-						<!-- <img src="./media/images/temp1.jpg" alt="" class="wait-appear"> -->
-					</form>
-				</div>
-			</div>
-		</div>
-		<h4>既存の画像を利用する</h4>
-		<div class="container row">
-			<div class="col-md-6 p-3">
-				<a href="{% url "garbage:sample1" %}">
-					<img src="./media/images/temp1.jpg" alt="画像1" class="sample-img">
-				</a>
-			</div>
-			<div class="col-md-6 p-3">
-				<a href="{% url "garbage:sample2" %}">
-					<img src="./media/images/temp2.jpg" alt="画像2" class="sample-img">
-				</a>
-			</div>
-		</div>
-		<footer>
-			<p id="copyright" class="mb-0">Copyright &copy; 2020 eycjur All Rights Reserved.</p>
-		</footer>
+
+{% block main %}
+<div class="col-md-8">
+	<div class="container card p-4 h-100">
+		<p>分類を調べたい画像を入力してください</p>
+		<form action="{% url "garbage:result" %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form }}
+			<br>
+			<button type="submit" class="mt-3 wait-disappear">送信</button>
+			<!-- <img src="./media/images/temp1.jpg" alt="" class="wait-appear"> -->
+		</form>
 	</div>
-</body>
-</html>
+</div>
+{% endblock main %}
+
+{% block second %}
+<h4>既存の画像を利用する</h4>
+<div class="container row">
+	<div class="col-md-6 p-3">
+		<a href='{% url "garbage:result_num" num=1 %}'>
+			<img src="{% static 'garbage/media/images/temp1.jpg' %}" alt="画像1" class="sample-img">
+		</a>
+	</div>
+	<div class="col-md-6 p-3">
+		<a href='{% url "garbage:result_num" num=2 %}'>
+			<img src="{% static 'garbage/media/images/temp2.jpg' %}" alt="画像2" class="sample-img">
+		</a>
+	</div>
+</div>
+{% endblock second %}
