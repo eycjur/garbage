@@ -14,6 +14,16 @@ body{
 	padding-bottom: 40px;
 }
 
+#toggler{
+	margin: auto 0;
+}
+
+#sidebar__item--fixed{
+	position: sticky;
+	z-index: 1;
+}
+
+
 #result-img{
 	width: 100%;
 	height: auto;
