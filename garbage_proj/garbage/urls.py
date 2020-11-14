@@ -8,4 +8,4 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("result", views.result, name="result"),
     path("result/<int:num>", views.result, name="result_num"),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
