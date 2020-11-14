@@ -101,10 +101,7 @@ p[role="button"]:hover{
 
 /* result */
 #result-img{
-	width: 100%;
+	width: 80%;
+	margin: 0 auto 10px auto;
 	height: auto;
 }
-
-
-
-
