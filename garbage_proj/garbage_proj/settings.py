@@ -25,7 +25,7 @@ SECRET_KEY = 'g6%53&-t)h62c3x@xi62iu@m@=^ml#2c_tyh!pt_4l63e^xeni'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'garbage_proj.urls'
@@ -124,3 +125,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/garbage/media')
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+import django_heroku #追加
+django_heroku.settings(locals()) #追加
