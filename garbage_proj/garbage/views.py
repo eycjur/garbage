@@ -44,8 +44,8 @@ def predict(img):
     from keras.models import model_from_json
     from PIL import Image
 
-    model = model_from_json(open("../model.json").read())
-    model.load_weights('../param.hdf5')
+    model = model_from_json(open("./static/model.json").read())
+    model.load_weights('./static/param.hdf5')
 
     img_width, img_height = 150, 150
     img = Image.open(img)
