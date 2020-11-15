@@ -5,7 +5,10 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .forms import UploadPictureForm
 from PIL import Image
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
 
 def index(request):
     params = {
@@ -16,7 +19,7 @@ def index(request):
 
 def result(request, num=0):
     if num:
-        img = "./static/garbage/media/images/" + ["temp1.jpg", "temp2.jpg"][num-1]
+        img = BASE_DIR + "/static/garbage/media/images/" + ["temp1.jpg", "temp2.jpg"][num-1]
 
     else:
         form = UploadPictureForm(request.POST, request.FILES)
@@ -44,12 +47,12 @@ def predict(img):
     from keras.models import model_from_json
     from PIL import Image
 
-    model = model_from_json(open("./static/model.json").read())
-    model.load_weights('./static/param.hdf5')
+    model = model_from_json(open(BASE_DIR + "/static/model.json").read())
+    model.load_weights(BASE_DIR + '/static/param.hdf5')
 
     img_width, img_height = 150, 150
     img = Image.open(img)
-    img.save("./static/garbage/media/images/image.png")
+    img.save(BASE_DIR + "/static/garbage/media/images/image.png")
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
     days = ["第2・4木曜日", "水曜日", "火・金曜日", "第1・3金曜日", "第1・3金曜日"]
