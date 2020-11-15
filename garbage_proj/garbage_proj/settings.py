@@ -126,6 +126,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/garbage/media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 import django_heroku #追加
 django_heroku.settings(locals()) #追加
