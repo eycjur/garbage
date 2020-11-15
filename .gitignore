@@ -3,3 +3,4 @@ val
 .idea
 *.hdf5
 __pycache__
+image.png
