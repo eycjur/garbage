@@ -9,7 +9,7 @@ from glob import glob
 
 
 # 分類するクラス
-classes = glob("train/*")
+classes = glob("./train/*")
 classes = [c.split("\\", 1)[-1] for c in classes]
 nb_classes = len(classes)
 
@@ -17,8 +17,8 @@ nb_classes = len(classes)
 img_width, img_height = 150, 150
 
 # 画像フォルダの指定
-train_dir = 'train'
-val_dir = 'val'
+train_dir = './train'
+val_dir = './val'
 
 #バッチサイズ
 batch_size = 16
