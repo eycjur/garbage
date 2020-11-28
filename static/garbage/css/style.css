@@ -98,6 +98,9 @@ p[role="button"]:hover{
 	display: none;
 }
 
+#waiting-text{
+	display: none;
+}
 
 /* result */
 #result-img{
@@ -105,3 +108,12 @@ p[role="button"]:hover{
 	margin: 0 auto 10px auto;
 	height: auto;
 }
+
+@media screen and (max-width:600px){
+	.smart-padding{
+		padding-left: .25em;
+		padding-right: .25em;
+	}
+}
+
+
