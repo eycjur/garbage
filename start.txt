@@ -19,7 +19,12 @@ LANGUAGE_CODE = 'ja'
 TIME_ZONE = 'Asia/Tokyo'
 
 モデルを作成(sns/models.py)
-
+class Answer_Registered(models.Model):
+	owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="answer_owner")
+	choice = models.TextField(max_length=1000)
+	ans1 = models.IntegerField(null=True, blank=True)
+	ans2 = models.IntegerField(null=True, blank=True)
+	
 ・マイグレーション（DBの作成）
 python manage.py makemigrations sns
 python manage.py migrate

@@ -40,6 +40,12 @@ p[role="button"]:hover{
 	background-color: #6c757d ;
 }
 
+@media screen and (max-width:991px){
+	label[for="id_word"]{
+		display: none;
+	}
+}
+
 /* toggle */
 #toggler{
 	margin: auto 0;

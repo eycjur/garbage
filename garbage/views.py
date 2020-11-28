@@ -3,21 +3,38 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .forms import UploadPictureForm
 from PIL import Image
+from .forms import *
+from .models import *
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print(BASE_DIR)
 
 def index(request):
+    """トップページ"""
     params = {
-        "form":UploadPictureForm()
+        "picture_form":UploadPictureForm(),
+        "serch_form":SerchClassForm()
     }
+    # register_classification()
     return render(request, "garbage/index.html", params)
 
+"""
+# csvからデータベースにデータ登録用
+def register_classification():
+    print(BASE_DIR)
+    file = BASE_DIR + "/ML_model/classification.csv"
+    with open(file, "r") as f:
+        data = f.read().split("\n")[:-1]
+        for datum in data:
+            key, classification = datum.rsplit(",", 1)
+            record = Classification(key=key, classification=classification)
+            record.save()
+"""
 
 def result(request, num=0):
+    """結果表示画面"""
     if num:
         img = BASE_DIR + "/static/garbage/media/images/" + ["temp1.jpg", "temp2.jpg"][num-1]
 
@@ -25,21 +42,32 @@ def result(request, num=0):
         form = UploadPictureForm(request.POST, request.FILES)
         if form.is_valid():
             img = form.cleaned_data["img"]
-        else:
-            params = {
-                "form":UploadPictureForm()
-            }
-            return render(request, "garbage/index.html", params)
 
     pred = predict(img)
 
     params = {
         "img":img,
-        "pred":pred
+        "pred":pred,
+        "serch_form":SerchClassForm()
     }
     return render(request, "garbage/result.html", params)
 
+
+def search(request):
+    print(request.GET["word"])
+    results = Classification.objects.filter(key__contains=request.GET["word"])
+    find = False if len(results)==0 else True
+        
+    params = {
+        "serch_results": results,
+        "serch_form":SerchClassForm(),
+        "find":find
+    }
+    return render(request, "garbage/search.html", params)
+
+
 def predict(img):
+    """予測モデル"""
     # 読み込み
     import numpy as np
     import matplotlib.pyplot as plt
