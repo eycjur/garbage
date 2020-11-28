@@ -1,3 +1,4 @@
+h5py==2.10.0
 bootstrap4==0.1.0
 Django==3.0.8
 django-bootstrap4==2.2.0
