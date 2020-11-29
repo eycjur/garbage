@@ -26,8 +26,10 @@ DEBUG = True
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
     SECRET_KEY = os.environ['SECRET_KEY']
+    print(SECRET_KEY)
 except:
     pass
+SECRET_KEY = 'g6%53&-t)h62c3x@xi62iu@m@=^ml#2c_tyh!pt_4l63e^xeni'
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -80,8 +82,12 @@ WSGI_APPLICATION = 'garbage_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-import dj_database_url
-DATABASES = dj_database_url.config()
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

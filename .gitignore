@@ -4,3 +4,4 @@ val
 __pycache__
 image.jpg
 image.*.jpg
+local_settings.py
