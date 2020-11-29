@@ -6,6 +6,10 @@ python manage.py runserver
 
 http://127.0.0.1:8000/recommend/
 
+heroku login
+git push heroku master
+heroku ps:scale web=1
+heroku open
 
 
 ・初回起動時

@@ -24,10 +24,15 @@
 		<div type=button id="close-button" class="mr-1" onclick="Sidebar()">
 			×
 		</div>
-		<p role="button" class="mb-2 btn border-dark rounded-0 btn-secondary">分別検索</p>
+
+		<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">サイト内リンク</p>
+		<a href="" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+
+		<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">分別検索</p>
 		<form action="{% url 'garbage:search' %}" method="get">
 			{{ serch_form }}
 		</form>
+
 		<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">外部リンク集</p>
 		<a href="https://manage.delight-system.com/threeR/web/benri?menu=benri&jichitaiId=kashiwashi&areaId=22125&benriCateId=7&bunbetsuCateId=7&faqCateId=%2f&lang=ja" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">ごみの分け方・出し方</a>
 		<a href="http://www.city.kashiwa.lg.jp/soshiki/080300/p011062_d/fil/k028.pdf" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">ゴミ出しカレンダー(pdf)</a>
@@ -39,7 +44,11 @@
 		<img src="{% static 'garbage/media/images/title.png' %}" alt="画像でゴミ分類！" class="m-4 pb-3" id="title">
 		<div class="container row">
 			<div class="card col-md-4 py-4 px-0 d-none d-md-block h-100" id="sidebar-fixed">
-				<p role="button" class="mb-2 btn border-dark rounded-0 btn-secondary">分別検索</p>
+
+				<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">サイト内リンク</p>
+				<a href="" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+
+				<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">分別検索</p>
 				<form action="{% url 'garbage:search' %}" method="get">
 					{{ serch_form }}
 				</form>
