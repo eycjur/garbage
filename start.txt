@@ -11,6 +11,7 @@ git push heroku master
 heroku ps:scale web=1
 heroku open
 
+heroku logs --tail
 
 ・初回起動時
 cd C:\Users\muto\Documents\programing\django
