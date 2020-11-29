@@ -6,8 +6,6 @@ python manage.py runserver
 
 http://127.0.0.1:8000/recommend/
 
-python -m smtpd -n -c DebuggingServer -d localhost:25
-
 heroku login
 git push heroku master
 heroku ps:scale web=1
@@ -19,6 +17,9 @@ cd C:\Users\muto\Documents\programing\django
 django-admin startproject project
 cd project
 python manage.py startapp sns
+
+staticファイルを集約
+python manage.py collectstatic
 
 ・project/setting.pyのINSTALLED_APPSに'sns',追加
 LANGUAGE_CODE = 'ja'
