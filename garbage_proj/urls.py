@@ -25,7 +25,7 @@ urlpatterns = [
     path("", views.index)
 ]
 
-handler400 = views.custom_server_error
-handler403 = views.custom_server_error1
-handler404 = views.custom_server_error2
-handler500 = views.custom_server_error3
+# handler400 = views.custom_server_error
+# handler403 = views.custom_server_error1
+# handler404 = views.custom_server_error2
+# handler500 = views.custom_server_error3

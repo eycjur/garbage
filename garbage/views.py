@@ -14,77 +14,77 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-@requires_csrf_token
-def custom_server_error(request, template_name='400.html'):
-    import requests
-    import json
-    import traceback
-    requests.post(
-        'https://hooks.slack.com/services/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',
-        data=json.dumps({
-            'text': '\n'.join([
-                f'Request uri: {request.build_absolute_uri()}',
-                traceback.format_exc(),
-            ]),
-            'username': 'Django エラー通知',
-            'icon_emoji': ':jack_o_lantern:',
-        })
-    )
-    return HttpResponseServerError('<h1>Internal Server Error(400)</h1>')
+# @requires_csrf_token
+# def custom_server_error(request, template_name='400.html'):
+#     import requests
+#     import json
+#     import traceback
+#     requests.post(
+#         'https://hooks.slack.com/services/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',
+#         data=json.dumps({
+#             'text': '\n'.join([
+#                 f'Request uri: {request.build_absolute_uri()}',
+#                 traceback.format_exc(),
+#             ]),
+#             'username': 'Django エラー通知',
+#             'icon_emoji': ':jack_o_lantern:',
+#         })
+#     )
+#     return HttpResponseServerError('<h1>Internal Server Error(400)</h1>')
 
-@requires_csrf_token
-def custom_server_error1(request, template_name='403.html'):
-    import requests
-    import json
-    import traceback
-    requests.post(
-        'https://hooks.slack.com/services/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',
-        data=json.dumps({
-            'text': '\n'.join([
-                f'Request uri: {request.build_absolute_uri()}',
-                traceback.format_exc(),
-            ]),
-            'username': 'Django エラー通知',
-            'icon_emoji': ':jack_o_lantern:',
-        })
-    )
-    return HttpResponseServerError('<h1>Internal Server Error(403)</h1>')
+# @requires_csrf_token
+# def custom_server_error1(request, template_name='403.html'):
+#     import requests
+#     import json
+#     import traceback
+#     requests.post(
+#         'https://hooks.slack.com/services/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',
+#         data=json.dumps({
+#             'text': '\n'.join([
+#                 f'Request uri: {request.build_absolute_uri()}',
+#                 traceback.format_exc(),
+#             ]),
+#             'username': 'Django エラー通知',
+#             'icon_emoji': ':jack_o_lantern:',
+#         })
+#     )
+#     return HttpResponseServerError('<h1>Internal Server Error(403)</h1>')
 
-@requires_csrf_token
-def custom_server_error2(request, template_name='404.html'):
-    import requests
-    import json
-    import traceback
-    requests.post(
-        'https://hooks.slack.com/services/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',
-        data=json.dumps({
-            'text': '\n'.join([
-                f'Request uri: {request.build_absolute_uri()}',
-                traceback.format_exc(),
-            ]),
-            'username': 'Django エラー通知',
-            'icon_emoji': ':jack_o_lantern:',
-        })
-    )
-    return HttpResponseServerError('<h1>Internal Server Error(404)</h1>')
+# @requires_csrf_token
+# def custom_server_error2(request, template_name='404.html'):
+#     import requests
+#     import json
+#     import traceback
+#     requests.post(
+#         'https://hooks.slack.com/services/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',
+#         data=json.dumps({
+#             'text': '\n'.join([
+#                 f'Request uri: {request.build_absolute_uri()}',
+#                 traceback.format_exc(),
+#             ]),
+#             'username': 'Django エラー通知',
+#             'icon_emoji': ':jack_o_lantern:',
+#         })
+#     )
+#     return HttpResponseServerError('<h1>Internal Server Error(404)</h1>')
 
-@requires_csrf_token
-def custom_server_error3(request, template_name='500.html'):
-    import requests
-    import json
-    import traceback
-    requests.post(
-        'https://hooks.slack.com/services/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',
-        data=json.dumps({
-            'text': '\n'.join([
-                f'Request uri: {request.build_absolute_uri()}',
-                traceback.format_exc(),
-            ]),
-            'username': 'Django エラー通知',
-            'icon_emoji': ':jack_o_lantern:',
-        })
-    )
-    return HttpResponseServerError('<h1>Internal Server Error(500)</h1>')
+# @requires_csrf_token
+# def custom_server_error3(request, template_name='500.html'):
+#     import requests
+#     import json
+#     import traceback
+#     requests.post(
+#         'https://hooks.slack.com/services/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',
+#         data=json.dumps({
+#             'text': '\n'.join([
+#                 f'Request uri: {request.build_absolute_uri()}',
+#                 traceback.format_exc(),
+#             ]),
+#             'username': 'Django エラー通知',
+#             'icon_emoji': ':jack_o_lantern:',
+#         })
+#     )
+#     return HttpResponseServerError('<h1>Internal Server Error(500)</h1>')
 
 
 def index(request):
