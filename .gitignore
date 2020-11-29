@@ -5,3 +5,4 @@ __pycache__
 image.png
 staticfiles
 model.pkl
+local_settings

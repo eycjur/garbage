@@ -36,15 +36,15 @@ def register_classification():
 def result(request, num=0):
     """結果表示画面"""
     if num:
-        img = BASE_DIR + "/static/garbage/media/images/" + ["temp1.jpg", "temp2.jpg"][num-1]
-
+        img = f"{BASE_DIR}/static/garbage/media/images/temp{num}.jpg"
     else:
         form = UploadPictureForm(request.POST, request.FILES)
         if form.is_valid():
             img = form.cleaned_data["img"]
+        else:
+            return index(None)
 
     pred = predict(img)
-
     params = {
         "img":img,
         "pred":pred,
