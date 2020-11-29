@@ -20,7 +20,7 @@ def custom_server_error(request, template_name='500.html'):
     import json
     import traceback
     requests.post(
-        'https://hooks.slack.com/services/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',
+        'https://hooks.slack.com/services/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',
         data=json.dumps({
             'text': '\n'.join([
                 f'Request uri: {request.build_absolute_uri()}',
