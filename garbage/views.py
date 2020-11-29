@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.views import generic
 from PIL import Image
 from .forms import *
 from .models import *
@@ -64,6 +66,27 @@ def search(request):
         "find":find
     }
     return render(request, "garbage/search.html", params)
+
+def opinion(request): 
+    params = {
+        "redirect":False,
+        "serch_form":SerchClassForm(),
+        "opinion_form":OpinionForm()
+    }
+    return render(request, "garbage/opinion.html", params)
+
+def opinion_submit(request):
+    opinion_form = OpinionForm()
+    opinion_form.title = request.POST["title"]
+    opinion_form.text = request.POST["text"]
+    opinion_form.send_email()
+
+    params = {
+        "redirect":True,
+        "serch_form":SerchClassForm(),
+        "opinion_form":OpinionForm()
+    }
+    return render(request, "garbage/opinion.html", params)
 
 
 def predict(img):

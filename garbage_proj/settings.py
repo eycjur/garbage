@@ -129,7 +129,15 @@ MEDIA_URL = '/media/'
 import django_heroku #追加
 django_heroku.settings(locals()) #追加
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 try:
     from .local_settings import *
 except ImportError:
     pass
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'rh38wq74ytqtq3ghq3t837tgf8g3wt@gmail.com'
+EMAIL_HOST_PASSWORD = 'pjiidhwnzxqezzvk'
+EMAIL_USE_TLS = True

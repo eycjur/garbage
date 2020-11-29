@@ -26,7 +26,7 @@
 		</div>
 
 		<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">サイト内リンク</p>
-		<a href="" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+		<a href="{% url 'garbage:opinion' %}" class="btn btn-default border-dark mb-1 rounded-0" role="button">ご意見募集</a>
 
 		<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">分別検索</p>
 		<form action="{% url 'garbage:search' %}" method="get">
@@ -38,15 +38,18 @@
 		<a href="http://www.city.kashiwa.lg.jp/soshiki/080300/p011062_d/fil/k028.pdf" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">ゴミ出しカレンダー(pdf)</a>
 	</div>
 	<div id="wrapper">
+		{% block first %}{% endblock first %}
 		<button class="toggler d-md-none display-toggler-inline" type="button" id="toggler" onclick="Sidebar()">
 			<i class="fas fa-bars fa-2x"></i>
 		</button>
-		<img src="{% static 'garbage/media/images/title.png' %}" alt="画像でゴミ分類！" class="m-4 pb-3" id="title">
+		<a href="{% url 'garbage:index' %}">
+			<img src="{% static 'garbage/media/images/title.png' %}" alt="画像でゴミ分類！" class="m-4 pb-3" id="title">
+		</a>
 		<div class="container row">
 			<div class="card col-md-4 py-4 px-0 d-none d-md-block h-100" id="sidebar-fixed">
 
 				<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">サイト内リンク</p>
-				<a href="" class="btn btn-default border-dark mb-1 rounded-0" role="button" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+				<a href="{% url 'garbage:opinion' %}" class="btn btn-default border-dark mb-1 rounded-0" role="button">ご意見募集</a>
 
 				<p role="button" class="my-2 btn border-dark rounded-0 btn-secondary">分別検索</p>
 				<form action="{% url 'garbage:search' %}" method="get">
