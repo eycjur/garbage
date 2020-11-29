@@ -29,7 +29,6 @@ try:
     print("SECRET_KEY", SECRET_KEY, "SECRET_KEY")
 except:
     pass
-SECRET_KEY = 'g6%53&-t)h62c3x@xi62iu@m@=^ml#2c_tyh!pt_4l63e^xeni'
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -135,8 +134,20 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 try:
     from .local_settings import *
-except ImportError:
-    pass
+except:
+    print("except")
+
+
+SECRET_KEY = 'g6%53&-t)h62c3x@xi62iu@m@=^ml#2c_tyh!pt_4l63e^xeni'
+DEBUG = True
+ALLOWED_HOSTS = ['*']
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
