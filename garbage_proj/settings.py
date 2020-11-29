@@ -81,8 +81,8 @@ WSGI_APPLICATION = 'garbage_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-import dj_database_url
-DATABASES = dj_database_url.config()
+# import dj_database_url
+# DATABASES = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -138,7 +138,6 @@ except:
     print("except")
 
 
-DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
