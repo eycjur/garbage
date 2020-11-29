@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.conf.urls import handler500
 from garbage import views
 
 urlpatterns = [
@@ -23,3 +24,5 @@ urlpatterns = [
     path("garbage/", include("garbage.urls")),
     path("", views.index)
 ]
+
+handler500 = views.custom_server_error

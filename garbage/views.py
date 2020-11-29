@@ -4,14 +4,34 @@ from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.views.decorators.csrf import requires_csrf_token
 from django.views import generic
+from django.http import HttpResponseServerError
 from PIL import Image
 from .forms import *
 from .models import *
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(BASE_DIR)
+
+@requires_csrf_token
+def custom_server_error(request, template_name='500.html'):
+    import requests
+    import json
+    import traceback
+    requests.post(
+        'https://hooks.slack.com/services/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',
+        data=json.dumps({
+            'text': '\n'.join([
+                f'Request uri: {request.build_absolute_uri()}',
+                traceback.format_exc(),
+            ]),
+            'username': 'Django エラー通知',
+            'icon_emoji': ':jack_o_lantern:',
+        })
+    )
+    return HttpResponseServerError('<h1>Internal Server Error</h1>')
+
 
 def index(request):
     """トップページ"""
@@ -98,12 +118,13 @@ def predict(img):
     from keras.models import model_from_json
     from PIL import Image
 
-    model = model_from_json(open(BASE_DIR + "/static/model.json").read())
-    model.load_weights(BASE_DIR + '/static/param.hdf5')
+    model = model_from_json(open(BASE_DIR + "/model/model.json").read())
+    model.load_weights(BASE_DIR + '/model/param.hdf5')
 
     img_width, img_height = 150, 150
     img = Image.open(img)
     img.save(BASE_DIR + "/static/garbage/media/images/image.jpg")
+    img.save(BASE_DIR + "/staticfiles/garbage/media/images/image.jpg")
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
     days = ["第2・4木曜日", "水曜日", "火・金曜日", "第1・3金曜日", "第1・3金曜日"]
@@ -116,6 +137,7 @@ def predict(img):
     pred = model.predict(x)[0]
     # 結果を表示する
     np.set_printoptions(suppress=True)
-    pred_list = [[c, "{:.2f}".format(s), d] for (c, s, d) in zip(classes, pred*100, days)]
+    pred_list = [[c, s, d] for (c, s, d) in zip(classes, pred*100, days)]
     pred_list = sorted(pred_list, key=lambda x:x[1], reverse=True)
+    pred_list = [[c, "{:.2f}".format(s), d] for (c, s, d) in pred_list]
     return pred_list

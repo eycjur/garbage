@@ -2,8 +2,6 @@ train
 val
 .idea
 __pycache__
-image.png
 image.jpg
-staticfiles
-model.pkl
+image.*.jpg
 local_settings.py
