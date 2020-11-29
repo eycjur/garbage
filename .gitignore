@@ -6,4 +6,4 @@ image.png
 image.jpg
 staticfiles
 model.pkl
-local_settings
+local_settings.py

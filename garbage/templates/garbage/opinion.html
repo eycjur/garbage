@@ -1,0 +1,26 @@
+{% extends "garbage/base.html" %}
+{% load static %}
+
+{% block first %}
+	{% if redirect %}
+	<div class="alert alert-primary" role="alert" id="opinion-alert">ご意見ありがとうございました。</div>
+	{% endif %}
+{% endblock first %}
+
+{% block main %}
+<div class="col-md-8">
+	<div class="container card px-1 py-3">
+		<h2 class="m-3">ご意見募集</h2>
+		<div class="container smart-padding">
+			<form action="{% url 'garbage:opinion_submit' %}" method="post" class="mb-3">
+				<table class="table" id="opinions-table">
+					{% csrf_token %}
+					{{ opinion_form.as_table }}
+				</table>
+				<button type="submit">送信する</button>
+			</form>
+			<a href="{% url 'garbage:index' %}">Topへ戻る</a>
+		</div>
+	</div>
+</div>
+{% endblock main %}

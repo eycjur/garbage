@@ -118,4 +118,20 @@ p[role="button"]:hover{
 	}
 }
 
+/* opinions */
 
+#opinions-table tr td input,textarea{
+	width: 100%;
+}
+
+#opinion-alert{
+	position: absolute;
+	width: 100%;
+	animation: fadeOut 2s ease-in 0.1s 1 normal;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+	0% {opacity: 1}
+	100% {opacity: 0}
+}
