@@ -29,8 +29,9 @@ try:
     print("SECRET_KEY", SECRET_KEY, "SECRET_KEY")
 except:
     pass
+SECRET_KEY = 'g6%53&-t)h62c3x@xi62iu@m@=^ml#2c_tyh!pt_4l63e^xeni'
 
-ALLOWED_HOSTS = ['*']#['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
