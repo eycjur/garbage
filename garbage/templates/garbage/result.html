@@ -5,7 +5,8 @@
 <div class="col-md-8 smart-padding">
 	<div class="container card px-1 py-3">
 		<h2 class="m-3">分類結果</h2>
-		<img src="{% static 'garbage/media/images/image.jpg' %}" alt="画像" id="result-img">
+		<!-- <img src="{% static 'garbage/media/images/image.jpg' %}" alt="画像" id=""> -->
+		<img src="data:image/png;base64,{{ base64Img }}" alt="画像" id="result-img">
 		<div class="container smart-padding">
 			<table class="table" id="result-table">
 				<tr>
