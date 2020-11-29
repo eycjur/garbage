@@ -80,7 +80,7 @@ def predict(img):
 
     img_width, img_height = 150, 150
     img = Image.open(img)
-    img.save(BASE_DIR + "/static/garbage/media/images/image.png")
+    img.save(BASE_DIR + "/static/garbage/media/images/image.jpg")
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
     days = ["第2・4木曜日", "水曜日", "火・金曜日", "第1・3金曜日", "第1・3金曜日"]

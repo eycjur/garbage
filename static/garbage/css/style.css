@@ -104,10 +104,6 @@ p[role="button"]:hover{
 	display: none;
 }
 
-#waiting-text{
-	display: none;
-}
-
 /* result */
 #result-img{
 	width: 80%;

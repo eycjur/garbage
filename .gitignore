@@ -3,6 +3,7 @@ val
 .idea
 __pycache__
 image.png
+image.jpg
 staticfiles
 model.pkl
 local_settings
