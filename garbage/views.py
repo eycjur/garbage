@@ -66,6 +66,10 @@ def result(request, num=0):
         else:
             return index(None)
 
+    img = Image.open(img)
+    after_size = max(max(img.width, img.height)//640, 1)
+    img = img.resize((img.width//after_size, img.height//after_size))
+
     pred = predict(img)
     base64Img = get_base64(img)
     params = {
@@ -80,9 +84,8 @@ def result(request, num=0):
 def get_base64(img):
     import base64
     import io
-    draw = Image.open(img)
     buffer = io.BytesIO()
-    draw.save(buffer, format="PNG")
+    img.save(buffer, format="PNG")
     base64Img = base64.b64encode(buffer.getvalue()).decode()
     return base64Img
 
@@ -132,8 +135,6 @@ def predict(img):
     model.load_weights(BASE_DIR + '/model/param.hdf5')
 
     img_width, img_height = 150, 150
-    img = Image.open(img)
-    # img.save(BASE_DIR + "/static/garbage/media/images/image.jpg")
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
     days = ["第2・4木曜日", "水曜日", "火・金曜日", "第1・3金曜日", "第1・3金曜日"]
