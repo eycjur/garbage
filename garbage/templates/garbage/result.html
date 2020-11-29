@@ -2,15 +2,23 @@
 {% load static %}
 
 {% block main %}
-<div class="col-md-8">
-	<div class="container card p-4 px-1">
+<div class="col-md-8 px-1">
+	<div class="container card px-1 py-3">
 		<h2 class="m-3">分類結果</h2>
 		<img src="{% static 'garbage/media/images/image.png' %}" alt="画像" id="result-img">
-		<div class="container">
-			<table class="table">
-				<tr><th>分類</th><td>確率</td><td>収集曜日</td></tr>
+		<div class="container smart-padding">
+			<table class="table" id="result-table">
+				<tr>
+					<th class="px-1">分類</th>
+					<td class="px-1">確率</td>
+					<td class="px-1">収集曜日</td>
+				</tr>
 				{% for key, value, day in pred %}
-				<tr><th>{{ key }}</th><td>{{ value }}%</td><td>{{ day }}</td></tr>
+				<tr>
+					<th class="px-1">{{ key }}</th>
+					<td class="px-1">{{ value }}%</td>
+					<td class="px-1">{{ day }}</td>
+				</tr>
 				{% endfor %}
 			</table>
 			<a href="{% url "garbage:index" %}">Topへ戻る</a>

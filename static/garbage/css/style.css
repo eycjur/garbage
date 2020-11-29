@@ -40,6 +40,12 @@ p[role="button"]:hover{
 	background-color: #6c757d ;
 }
 
+@media screen and (max-width:991px){
+	label[for="id_word"]{
+		display: none;
+	}
+}
+
 /* toggle */
 #toggler{
 	margin: auto 0;
@@ -98,6 +104,9 @@ p[role="button"]:hover{
 	display: none;
 }
 
+#waiting-text{
+	display: none;
+}
 
 /* result */
 #result-img{
@@ -105,3 +114,12 @@ p[role="button"]:hover{
 	margin: 0 auto 10px auto;
 	height: auto;
 }
+
+@media screen and (max-width:600px){
+	.smart-padding{
+		padding-left: .25em;
+		padding-right: .25em;
+	}
+}
+
+
