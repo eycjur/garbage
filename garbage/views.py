@@ -30,7 +30,7 @@ def custom_server_error(request, template_name='500.html'):
             'icon_emoji': ':jack_o_lantern:',
         })
     )
-    return HttpResponseServerError('<h1>Internal Server Error</h1>')
+    return HttpResponseServerError('<h1>Internal Server Error(500)</h1>')
 
 
 def index(request):
