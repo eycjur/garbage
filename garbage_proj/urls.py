@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from django.conf.urls import handler400, handler403, handler404, handler500
+from django.conf.urls import handler500
 from garbage import views
 
 urlpatterns = [
@@ -25,7 +25,4 @@ urlpatterns = [
     path("", views.index)
 ]
 
-# handler400 = views.custom_server_error
-# handler403 = views.custom_server_error1
-# handler404 = views.custom_server_error2
-# handler500 = views.custom_server_error3
+handler500 = views.custom_server_error

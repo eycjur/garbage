@@ -138,7 +138,7 @@ except:
     print("except")
 
 
-SECRET_KEY = 'g6%53&-t)h62c3x@xi62iu@m@=^ml#2c_tyh!pt_4l63e^xeni'
+# SECRET_KEY = 'g6%53&-t)h62c3x@xi62iu@m@=^ml#2c_tyh!pt_4l63e^xeni'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 DATABASES = {
