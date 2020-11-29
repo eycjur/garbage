@@ -1,6 +1,14 @@
 {% extends "garbage/base.html" %}
 {% load static %}
 
+{% block head %}
+<script>
+	document.getElementById("opinion-alert").addEventListener('animationend', function() {
+		document.getElementById("opinion-alert").style.display="none"
+	});
+</script>
+{% endblock head %}
+
 {% block first %}
 	{% if redirect %}
 	<div class="alert alert-primary" role="alert" id="opinion-alert">ご意見ありがとうございました。</div>
