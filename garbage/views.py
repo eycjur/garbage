@@ -131,10 +131,10 @@ def predict(img):
     from keras.preprocessing import image
     from keras.models import model_from_json
 
-    model = model_from_json(open(BASE_DIR + "/model/model.json").read())
-    model.load_weights(BASE_DIR + '/model/param.hdf5')
+    model = model_from_json(open(BASE_DIR + "/ML_model/model.json").read())
+    model.load_weights(BASE_DIR + '/ML_model/param.hdf5')
 
-    img_width, img_height = 150, 150
+    img_width, img_height = 160, 160
     img = np.array(img.resize((img_width, img_height)))
     classes = ['不燃ごみ', '包装容器プラスチック類', '可燃ごみ', '有害ごみ', '資源品']
     days = ["第2・4木曜日", "水曜日", "火・金曜日", "第1・3金曜日", "第1・3金曜日"]
