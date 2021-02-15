@@ -36,8 +36,8 @@
 
 ## プロダクト公開ページ
 herokuで公開しています。
-- [画像でゴミ分類！](https://garbageeycjur.herokuapp.com/garbage/)
-(絶賛更新中なので、開けない可能性があります。)
+- [画像でゴミ分類！](https://garbageeycjur.herokuapp.com/garbage/)  
+(herokuの実行時間の制限でエラーが出る可能性があります→その場合は再度実行すると上手くいくことがあります)
 
 ## デモ・説明用動画
 - [「画像でゴミ分類！」アプリ解説(youtube)](https://youtu.be/VIZKlv9uB0k)
