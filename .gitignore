@@ -1,9 +1,18 @@
-train
-val
-old
-.idea
-__pycache__
+# 画像フォルダ
+train/
+val/
+
+# used file
+old/
+
+# キャッシュファイル
+.idea/
+__pycache__/
+debug.log
+
 image.jpg
 image.*.jpg
+
+# ローカルファイル
 local_settings.py
-debug.log
+chromedriver.exe
