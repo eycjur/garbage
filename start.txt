@@ -4,6 +4,9 @@ cd C:\Users\muto\Documents\programing\django\project
 cd garbage_proj
 python manage.py runserver
 
+テスト
+python manage.py test garbage.tests.test_views
+
 http://127.0.0.1:8000/recommend/
 
 heroku login
